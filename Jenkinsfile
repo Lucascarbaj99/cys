@@ -35,19 +35,13 @@ node {
 						
 			"C:/Users/Administrador/AppData/Local/Apps/OpenCover/OpenCover.Console.exe" -target:"C:/Program Files (x86)/NUnit.org/nunit-console/nunit3-console.exe" -targetargs:CapaPruebas/bin/Release/CapaPruebas.dll /noshadow 
 			
-		'''
-	}
-	
-	stage ("Status change") {
-		bat label:
-			'Status change',
-        script: '''
 			>nul find "<failure>" TestResult.xml && (
 				echo "FALLARON LOS TEST."
 				exit 1
 			)|| (
 				echo "TEST EJECUTADOS CORRECTAMENTE."
 			)
+			
 		'''
 	}
 }
